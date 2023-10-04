@@ -1,10 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
 import './index.css'
+import { CarreraTecnicaList } from './components/CarreraTecnicaList.jsx'
+
+const CarrerasTecnicas = [
+  {codigo: 1, nombre: 'programacion con java'},
+  {codigo: 2, nombre: 'desarrollo de aplicaciones web'},
+]
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <CarreraTecnicaList CarrerasTecnicas = {CarrerasTecnicas}/>
   </React.StrictMode>,
 )
