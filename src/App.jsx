@@ -1,19 +1,15 @@
-import { useState } from "react";
-import { CarreraTecnicaList } from "./components/CarreraTecnicaList";
+import { useCarreraTecnica } from "./hooks/useCarreraTecnica"
+import { CarrerasTecnicasPage } from "./pages/CarrerasTecnicasPage"
+import { CarreraTecnicaProvider } from "./context/carreraTecnicaProvider";
 
-const initCarrerasTecnicas = [
-    {codigo: '1', nombre: 'programacion con java'},
-    {codigo: '2', nombre: 'Desarrollo de aplicaciones web'}
-]
 
-export const App = () => {
-    const [CarrerasTecnicas,setCarrerasTecnicas] = useState(initCarrerasTecnicas)
+export const  App = () => {
+    const {initialCarreraTecnicaForm, handlerAddCarreraTecnica, carrerasTecnicas} = useCarreraTecnica();
 
     return (
-        <>
-            <h1>Carreras Tecnicas</h1>
-            <CarreraTecnicaList CarrerasTecnicas = {initCarrerasTecnicas}></CarreraTecnicaList>
-
+        <> <CarreraTecnicaProvider>
+            <CarrerasTecnicasPage carrerasTecnicas = {carrerasTecnicas} handlerAddCarreraTecnica = {handlerAddCarreraTecnica} initialCarreraTecnicaForm = {initialCarreraTecnicaForm}/>
+           </CarreraTecnicaProvider>
         </>
     )
 }
